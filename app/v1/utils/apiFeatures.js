@@ -4,21 +4,25 @@ class APIFeatures {
     queryString: request.query
     */
   constructor(model, queryString) {
-    this.model = model;
-    this.modelQuery = model.find();
+    this.Model = model;
+    this.modelQuery = this.Model.find();
     this.queryString = queryString;
     this.schemaFields = Object.keys(model.schema.paths);
   }
 
   search() {
-    const queryObj = { ...this.queryString }; // the {...} is to get a hard copy object
+    const queryObj = { ...this.queryString };
 
-    const queryArr = Object.keys(queryObj);
+    const queryArr = Object.keys(queryObj); // extract fields from queryString
+
+    // ignore any non-schema fields
     queryArr.forEach((el) => {
       if (!this.schemaFields.includes(el)) delete queryObj[el];
     });
-    let queryStr = JSON.stringify(queryObj);
-    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+    let queryStr = JSON.stringify(queryObj).replace(
+      /\b(eq|gte|gt|lte|lt)\b/g,
+      (match) => `$${match}`
+    );
 
     this.modelQuery = this.modelQuery.find(JSON.parse(queryStr)); // The default way in mongodb
 
