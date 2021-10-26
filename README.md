@@ -63,7 +63,25 @@ Pack Sizes
 /api/v1/coffee-machines?packSize=7
 ````
 
+# Answers to Questions:
 
+ALl Espresso Machines:- 
+````
+EM001, EM002, EM003
+````
 
+ALl Small Pods:- 
+````
+EP001, EP003, EP005, EP007
+EP011, EP013, EP015, EP017
+EP021, EP023, EP025, EP027
+EP031, EP033, EP035, EP037
+EP041, EP043, EP045, EP047
+````
 
+ALl Pods sold in 7 dozen packs:- 
+````
+EP007, EP017, EP027, EP037, EP047
+CP007, CP017, CP027, CP037, CP047
+````
 
