@@ -78,7 +78,7 @@ app.use((req, res, next) => {
 /* ROUTES ------------------------------------------------------------------------------ */
 
 app.use('/api/v1/coffee-machines', machineRouter);
-app.use('/api/v1/coffeee-pods', podRouter);
+app.use('/api/v1/coffee-pods', podRouter);
 
 // A midleware to handle ALL other (undefined) routes
 app.all('*', (req, res, next) => {
